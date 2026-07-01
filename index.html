@@ -378,12 +378,17 @@
       8447 Dachsen</p>
     </div>
     <div>
-      <form name="contact" method="POST" action="mailto:poetik_fese.0t@icloud.com">
+      <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+        <p class="hidden">
+          <label>
+            Don't fill this out if you're human: <input name="bot-field">
+          </label>
+        </p>
         <label>Name <input type="text" name="name"></label>
         <label>Vorname <input type="text" name="vorname"></label>
         <label>Email <input type="email" name="email"></label>
         <label>Deine Nachricht: <textarea name="message"></textarea></label>
-        <button type="submit">Senden</button>
+        <button type="submit">Send</button>
       </form>
     </div>
   </div>
