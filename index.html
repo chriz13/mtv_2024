@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTV Dachsen</title>
+<link rel="icon" href="https://mtv-dachsen.ch/wp-content/uploads/2024/01/mtvrund2-150x150.png">
+<style>
+  :root{
+    --color-dark:#1b4a81;
+    --color-darker:#192a3d;
+    --color-text:#000000;
+    --color-white:#ffffff;
+    --radius:30px;
+    --content-max:1200px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Poppins","DM Sans",system-ui,sans-serif;
+    color:#3A4F66;
+    line-height:1.5;
+  }
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;}
+  .wrap{max-width:var(--content-max);margin:0 auto;padding:0 20px;}
+
+  /* ---------- HEADER ---------- */
+  header.site-header{
+    position:absolute;
+    top:0;left:0;right:0;
+    z-index:10;
+    padding:20px 0;
+  }
+  .header-inner{
+    max-width:var(--content-max);
+    margin:0 auto;
+    padding:0 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .logo img{width:90px;height:90px;border-radius:50%;}
+  nav.main-nav ul{
+    list-style:none;
+    display:flex;
+    gap:28px;
+    margin:0;padding:0;
+  }
+  nav.main-nav a{
+    color:#fff;
+    font-weight:600;
+    font-size:15px;
+  }
+  .cta-button{
+    background:transparent;
+    border:2px solid #fff;
+    color:#fff;
+    padding:10px 22px;
+    border-radius:30px;
+    font-weight:600;
+    font-size:14px;
+    white-space:nowrap;
+  }
+  .cta-button:hover{opacity:.6;}
+
+  @media (max-width:820px){
+    .header-inner{flex-wrap:wrap;}
+    nav.main-nav ul{flex-wrap:wrap;gap:14px;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:600px;
+    padding:200px 20px 60px;
+    background:url('https://mtv-dachsen.ch/wp-content/uploads/2024/01/MTV-19.jpeg') center/cover no-repeat;
+    display:flex;
+    align-items:flex-end;
+  }
+  .hero-inner{max-width:var(--content-max);margin:0 auto;width:100%;}
+  .hero h1{
+    color:#fffffd;
+    font-size:clamp(30px,5vw,60px);
+    line-height:1.2;
+    margin:0 0 0.5rem;
+    text-shadow:2px 2px #000;
+  }
+  .hero .subtitel{
+    color:#fffffd;
+    font-size:clamp(24px,3.5vw,40px);
+    font-weight:700;
+    margin:0 0 1.5rem;
+    text-shadow:2px 2px #000;
+  }
+  .hero .anfrage-btn{
+    display:inline-block;
+    background:#fff;
+    color:var(--color-dark);
+    border:3px solid var(--color-dark);
+    border-radius:30rem;
+    padding:14px 40px;
+    font-weight:600;
+    font-size:20px;
+    opacity:.9;
+  }
+  .hero .anfrage-btn:hover{opacity:.5;}
+
+  /* ---------- USP BAR ---------- */
+  .usp{
+    background:linear-gradient(135deg,rgb(52,59,68) 0%,rgb(51,104,165) 43%,rgb(27,74,129) 100%);
+    padding:70px 20px;
+  }
+  .usp-grid{
+    max-width:var(--content-max);
+    margin:0 auto;
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+  .usp-grid > div{flex:1;min-width:220px;}
+  .usp h3{color:#fff;font-size:clamp(18px,2vw,28px);font-weight:600;margin:0 0 .6rem;}
+  .usp p{color:#fff;font-size:clamp(14px,1.2vw,18px);margin:0;}
+
+  /* ---------- GENERIC TWO-COL SECTION ---------- */
+  .split{
+    max-width:var(--content-max);
+    margin:0 auto;
+    padding:80px 20px;
+    display:flex;
+    gap:60px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .split > div{flex:1;min-width:280px;}
+  .split h2{
+    color:var(--color-text);
+    font-size:clamp(22px,3vw,35px);
+    font-weight:600;
+    margin:0 0 1rem;
+  }
+  .split p{font-size:clamp(14px,1.5vw,20px);color:var(--color-text);}
+  .split img{border-radius:var(--radius);object-fit:cover;width:100%;height:auto;max-height:500px;}
+  .btn{
+    display:inline-block;
+    background:var(--color-dark);
+    color:#fff;
+    border-radius:30px;
+    padding:19px 50px;
+    font-size:clamp(14px,1.2vw,18px);
+    margin-top:1rem;
+  }
+  .btn:hover{opacity:.6;}
+
+  /* ---------- QUOTE BANNER ---------- */
+  .quote-banner{
+    position:relative;
+    min-height:500px;
+    background:url('https://mtv-dachsen.ch/wp-content/uploads/2024/01/1-MTV-Turnen-scaled.jpeg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+  }
+  .quote-banner::before{
+    content:"";
+    position:absolute;inset:0;
+    background:#000;opacity:.3;
+  }
+  .quote-banner-inner{position:relative;max-width:900px;}
+  .quote-banner h3{color:#fff;font-size:clamp(26px,4vw,45px);font-weight:600;margin:0 0 .5rem;}
+  .quote-banner h5{color:#fff;font-size:clamp(15px,2vw,22px);font-weight:600;font-style:italic;margin:0;}
+
+  /* ---------- ORGANISATORISCHES ---------- */
+  .org{max-width:var(--content-max);margin:0 auto;padding:100px 20px;display:flex;gap:40px;flex-wrap:wrap;}
+  .org > div{flex:1;min-width:280px;}
+  .org h2{font-size:clamp(22px,3vw,35px);font-weight:600;margin:0 0 1rem;}
+  .org p{font-size:clamp(14px,1.5vw,20px);color:var(--color-text);}
+
+  /* ---------- WARUM MITMACHEN (cover section) ---------- */
+  .why{
+    position:relative;
+    background:url('https://mtv-dachsen.ch/wp-content/uploads/2024/01/mtv-indiaca-action-1-scaled.jpeg') center/cover no-repeat;
+    padding:0;
+  }
+  .why::before{
+    content:"";
+    position:absolute;inset:0;
+    background:#fff;opacity:.8;
+  }
+  .why-inner{
+    position:relative;
+    max-width:var(--content-max);
+    margin:0 auto;
+    padding:120px 20px 150px;
+  }
+  .why-inner h2{font-size:clamp(26px,4vw,45px);font-weight:600;margin:0 0 3rem;color:#000;}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px 40px;
+  }
+  .why-grid h6{font-size:clamp(15px,1.6vw,22px);font-weight:800;margin:0 0 .8rem;color:#000;}
+  .why-grid p{font-size:clamp(14px,1.5vw,20px);margin:0;color:#000;}
+  @media (max-width:820px){.why-grid{grid-template-columns:1fr;}}
+
+  /* ---------- JAHRESBERICHT ---------- */
+  .jahresbericht img{border-radius:var(--radius);object-fit:cover;width:100%;height:auto;}
+
+  /* ---------- KONTAKT ---------- */
+  .kontakt-wrap{max-width:var(--content-max);margin:0 auto;padding:30px 20px 160px;}
+  .kontakt-grid{display:flex;gap:60px;flex-wrap:wrap;}
+  .kontakt-grid > div{flex:1;min-width:280px;}
+  .kontakt-grid h2{font-size:clamp(22px,3vw,35px);font-weight:600;margin:2.5rem 0 1rem;}
+  .kontakt-grid p{font-size:clamp(14px,1.5vw,20px);color:var(--color-text);}
+  form{margin-top:3rem;}
+  form label{display:block;margin-bottom:14px;font-size:15px;}
+  form input,form textarea{
+    display:block;width:100%;margin-top:4px;
+    padding:10px 12px;border:1px solid #ccc;border-radius:6px;
+    font-family:inherit;font-size:14px;
+  }
+  form textarea{min-height:120px;}
+  form button{
+    background:var(--color-dark);color:#fff;border:none;
+    border-radius:30px;padding:14px 40px;font-size:15px;cursor:pointer;
+  }
+  form button:hover{opacity:.8;}
+  .hidden{display:none;}
+
+  /* ---------- SPONSOR ---------- */
+  .sponsor{max-width:var(--content-max);margin:0 auto 12rem;padding:0 45px;}
+  .sponsor h3{font-size:20px;margin:0 0 .5rem;}
+  .sponsor img{width:467px;max-width:100%;margin-top:1rem;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#f2f5f7;padding:24px 20px;text-align:center;font-size:14px;color:#475467;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <img src="https://mtv-dachsen.ch/wp-content/uploads/2024/01/mtvrund2-300x300.png" alt="MTV Dachsen Logo">
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#ueberuns">Über uns</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#jahresbericht">Jahresbericht</a></li>
+        <li><a href="https://mtv-dachsen.ch/wp-content/uploads/2024/01/mtv-Agenda.pdf" target="_blank" rel="noopener">Agenda</a></li>
+      </ul>
+    </nav>
+    <a class="cta-button" href="mailto:poetik_fese.0t@icloud.com?subject=Probeturnen&body=Hallo,%20ich%20m%C3%B6chte%20gerne%20mal%20vorbeischauen.%20Gerne%20komme%20ich%20das%20n%C3%A4chste%20Mal%20in%20Dachsen%20(Turnhalle%20Schulhaus)%20vorbei.%20Bis%20dann,%20danke%20:-)">Probeturnen?</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>MTV DACHSEN<br>Spass, Spiel &amp; Gymnastik</h1>
+    <p class="subtitel">Mach mit – bleib fit.</p>
+    <a class="anfrage-btn" href="#kontakt">Anfrage</a>
+  </div>
+</section>
+
+<section class="usp">
+  <div class="usp-grid">
+    <div>
+      <h3>Gesundheit</h3>
+      <p>Sportliche Betätigung im Verein fördert die körperliche Fitness, stärkt das Herz-Kreislauf-System und erhöht die Beweglichkeit, was insgesamt die Lebensqualität im Alter verbessert.</p>
+    </div>
+    <div>
+      <h3>Soziale Integration</h3>
+      <p>Durch die Teilnahme an Sportvereinen entstehen soziale Kontakte und Gemeinschaft. Das fördert nicht nur die psychische Gesundheit, sondern verhindert auch mögliche Einsamkeit im Alter.</p>
+    </div>
+    <div>
+      <h3>Mentale Stimulation</h3>
+      <p>Sportliche Aktivitäten bieten eine mentale Herausforderung, die das Gehirn stimuliert und geistige Fitness fördert. Dies kann dazu beitragen, kognitive Funktionen im Alter aufrechtzuerhalten und zu verbessern.</p>
+    </div>
+  </div>
+</section>
+
+<section class="split">
+  <div>
+    <h2>Die Geschichte unseres Clubs</h2>
+    <p>Der Männerturnverein-Dachsen wurde 2001 gegründet und umfasst heute über 30 Mitglieder. Alle Männer von Dachsen rufen wir herzlich zum Mitmachen auf. Selbstverständlich darfst du zum Probeturnen vorbeischauen. Wir trainieren <strong>jeden Montag von 20 Uhr – 21.30 Uhr</strong>. Während den offiziellen Primarschulferien fällt das Training aus.</p>
+    <a class="btn" href="#kontakt">Mitmachen!</a>
+  </div>
+  <div>
+    <img src="https://mtv-dachsen.ch/wp-content/uploads/2024/01/MTV-37-1024x768.jpeg" alt="MTV Dachsen Training">
+  </div>
+</section>
+
+<section class="split">
+  <div>
+    <img src="https://mtv-dachsen.ch/wp-content/uploads/2024/01/MTV-4-scaled-e1706474161353.jpeg" alt="Turnen und Spielen">
+  </div>
+  <div>
+    <h2>Turnen und Spielen</h2>
+    <p>Unser Turnstunden laufen in der Regel so ab: Ein Vorturner oder eine Vorturnerin wärmt unsere Muskeln und stärkt unsere Kondition. Das Einturnen dauert 45 Minuten. Nachher spielen wir Indiaca. Keine Angst – Indiaca ist, was Verletzungen anbelangt, harmlos.</p>
+    <p>Indiaca ist ein schnelles und sehr dynamisches Rückschlagspiel, welches auf südamerikanische Wurzeln zurückgeführt wird. Das Spiel ist eine Mannschaftssportart, die, auf einem durch ein Netz getrennten Spielfeld gespielt wird.</p>
+    <a class="btn" href="https://mtv-dachsen.ch/wp-content/uploads/2024/01/mtv-Agenda.pdf" target="_blank" rel="noopener">Agenda – Jahresprogramm</a>
+  </div>
+</section>
+
+<section class="quote-banner">
+  <div class="quote-banner-inner">
+    <h3>Nach dem Spiel will jeder wissen, wie man hätte spielen müssen!</h3>
+    <h5><em>oh – wie wahr 😉</em></h5>
+  </div>
+</section>
+
+<section class="org">
+  <div>
+    <h2 id="ueberuns">Organisatorisches</h2>
+  </div>
+  <div>
+    <p>Der MTV-Dachsen ist im Sinne des Schweizerischen Obligationenrechts als <strong>Verein</strong> konstituiert. Der 5-köpfige Vorstand leitet den Verein, der sich jährlich im März zur ordentlichen Vollversammlung trifft. Die Traktanden der VV oder Beiträge, die den Verein betreffen, können von den Mitgliedern gerne im Voraus eingereicht werden.</p>
+    <a class="btn" href="https://mtv-dachsen.ch/wp-content/uploads/2024/01/Statuten-2021.pdf" target="_blank" rel="noopener">Statuten als PDF</a>
+  </div>
+</section>
+
+<section class="why">
+  <div class="why-inner">
+    <h2>Warum du mitmachen solltest</h2>
+    <div class="why-grid">
+      <div>
+        <h6>Gesundheitliche Vorteile</h6>
+        <p>Sport fördert die körperliche Gesundheit, stärkt das Herz-Kreislauf-System und verbessert die Beweglichkeit, was besonders im Alter essentiell ist, um Krankheiten vorzubeugen.</p>
+      </div>
+      <div>
+        <h6>Soziales Netzwerk</h6>
+        <p>Aktive Vereine bieten eine soziale Gemeinschaft, in der ältere Menschen Freundschaften knüpfen, sich austauschen und gemeinsam ihre sportlichen Ziele verfolgen können.</p>
+      </div>
+      <div>
+        <h6>Mentale Stimulation</h6>
+        <p>Sportliche Aktivitäten fördern die geistige Fitness, schärfen die Konzentration und können sogar das Risiko von Demenzerkrankungen im Alter reduzieren.</p>
+      </div>
+      <div>
+        <h6>Motivation und Struktur</h6>
+        <p>Die Teilnahme an Vereinssport schafft eine regelmässige Routine, fördert die Disziplin und gibt älteren Menschen einen Anreiz, aktiv und fit zu bleiben.</p>
+      </div>
+      <div>
+        <h6>Spass und Freude</h6>
+        <p>Sportliche Aktivitäten in einem Verein bieten nicht nur körperliche Vorteile, sondern auch Spass und Freude, was die Motivation erhöht und das Wohlbefinden steigert.</p>
+      </div>
+      <div>
+        <h6>Anpassungsfähigkeit</h6>
+        <p>Vereinssport bietet verschiedene Disziplinen und Niveaus, sodass ältere Menschen die Möglichkeit haben, sich je nach Fitnesslevel und Vorlieben aktiv zu beteiligen und zu entwickeln.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="split jahresbericht">
+  <div>
+    <img src="https://mtv-dachsen.ch/wp-content/uploads/2024/11/mtvpraesidenten-1-scaled.jpeg" alt="Vorstand MTV Dachsen">
+  </div>
+  <div>
+    <h2 id="jahresbericht">Jahresbericht des Präsidenten</h2>
+    <p>Mit grosser Vorfreude und einem Augenzwinkern präsentieren wir euch voller Stolz den diesjährigen heiteren Jahresbericht des mtv-dachsen. Wie gewohnt, lassen wir keinen Schweisstropfen und kein Lächeln aus, während wir die vergangenen zwölf Monate Revue passieren lassen. Mehr erfahren…</p>
+    <a class="btn" href="https://mtv-dachsen.ch/wp-content/uploads/2024/01/Jahresbericht-www.pdf" target="_blank" rel="noopener">Jahresbericht des Präsidenten PDF</a>
+  </div>
+</section>
+
+<section class="kontakt-wrap">
+  <div class="kontakt-grid">
+    <div>
+      <h2 id="kontakt">Probeturnen? Fragen?</h2>
+      <p>Ergreife die Initiative für einen Sprung in die Fitnesswelt! Gerne sprechen wir über deine Ambitionen eine «Gymnastikreise» anzutreten. Lass uns Kontakt aufnehmen!</p>
+      <img src="https://mtv-dachsen.ch/wp-content/uploads/2024/02/emilvomMTV-2.png" alt="" style="width:259px;margin-top:1rem;">
+      <p><strong>Adresse und Impressum</strong><br>
+      Turnhalle Schulhaus Dachsen<br>
+      Dorfstrasse 3<br>
+      8447 Dachsen</p>
+    </div>
+    <div>
+      <form name="contact" method="POST" action="mailto:poetik_fese.0t@icloud.com">
+        <label>Name <input type="text" name="name"></label>
+        <label>Vorname <input type="text" name="vorname"></label>
+        <label>Email <input type="email" name="email"></label>
+        <label>Deine Nachricht: <textarea name="message"></textarea></label>
+        <button type="submit">Senden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="sponsor">
+  <h3>Unser Hauptsponsor</h3>
+  <p>Wir danken für die Unterstützung. Das MTV-Team.</p>
+  <img src="https://mtv-dachsen.ch/wp-content/uploads/2024/11/Raiffeisen_Logo_Claim_RGB.jpg" alt="Raiffeisen Logo">
+</section>
+
+<footer>
+  <p>Copyright © 2025 - MTV Dachsen</p>
+</footer>
+
+</body>
+</html>
